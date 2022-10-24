@@ -3,4 +3,4 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: cmake . && ctest -V -R
+      - run: ls -a && ctest -V -R
