@@ -3,4 +3,4 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: ls -a && ctest -V -R
+      - run: set -e && cd ../ && mkdir -p build && cd build && cmake .. && cmake --build . && cd ../build && ctest -V -R
