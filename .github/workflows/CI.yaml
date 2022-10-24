@@ -3,4 +3,4 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: ctest -V -R
+      - run: ls && ctest -V -R
