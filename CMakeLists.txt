@@ -25,3 +25,4 @@ set(SOURCES
 add_library(Matrix STATIC ${SOURCES} ${HEADERS})
 
 add_subdirectory(test)
+

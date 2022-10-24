@@ -5,7 +5,10 @@ set(This MatrixTests)
 set(SOURCES
         FirstPointTests.cpp
         SecondPointTests.cpp
-        ThirdPointTest.cpp FourthPointTest.cpp SixthPointTests.cpp SeventhPointTests.cpp)
+        ThirdPointTest.cpp
+        FourthPointTest.cpp
+        SixthPointTests.cpp
+        SeventhPointTests.cpp)
 
 add_executable(${This} ${SOURCES})
 target_link_libraries(MatrixTests PUBLIC
