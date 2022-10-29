@@ -1,3 +1,0 @@
-MatrixTests 2 0
----
-MatrixTests
