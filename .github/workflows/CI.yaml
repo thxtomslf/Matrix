@@ -1,0 +1,19 @@
+name: my-workflow-name
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configure
+      run: |
+        cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Debug
+    - name: Build
+      run: |
+        cmake --build build --config Debug
+    - name: Test
+      run: |
+        cd build
+        ctest -C Debug --output-on-failure --verbose
