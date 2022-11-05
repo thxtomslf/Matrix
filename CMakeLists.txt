@@ -1,28 +1,33 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(Matrix CXX)
+
+include("cmake/HunterGate.cmake")
+HunterGate(
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.314.tar.gz"
+        SHA1 "95c47c92f68edb091b5d6d18924baabe02a6962a"
+)
+
+project(MatrixProject CXX)
+
+set(DCMAKE_CXX_CLANG_TIDY /usr/bin/clang-tidy-3.9 -checks=*)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-enable_testing()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic -Werror -Wall -Wextra")
 
-add_subdirectory(googletest)
+option(BUILD_TESTS "Build tests" ON)
+option(BUILD_COVERAGE "Build code coverage" ON)
 
-set(HEADERS
-        src/include/Matrix.h
-        src/include/Vector.h
-        src/include/VectorRow.h
-        src/include/VectorColumn.h
+find_package(GTest CONFIG)
+if (NOT GTest_FOUND)
+    hunter_add_package(GTest)
+endif()
+find_package(GTest CONFIG REQUIRED)
 
-)
 
-set(SOURCES
-        src/cpp/Matrix.cpp
-        src/cpp/Vector.cpp
-        src/cpp/VectorColumn.cpp
-        src/cpp/VectorRow.cpp
-)
+if (BUILD_TESTS)
+    include(GoogleTest)
+    enable_testing()
+endif()
 
-add_library(Matrix STATIC ${SOURCES} ${HEADERS})
-
-add_subdirectory(test)
-
+add_subdirectory(matrix)
