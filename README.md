@@ -1,6 +1,9 @@
 # Matrix calculator
 - VK Education Homework №2
-- Made by: Павел Репин Евгеньевич
+- Выполнил: Павел Репин Евгеньевич
+- Группа: WEB-12
+- Ментор: Денис Кириллов
+- Преподаватель: Иван Возвахов
 - telegram: @repness
 
 
