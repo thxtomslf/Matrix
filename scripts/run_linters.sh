@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 
 cd ../
 
 echo -e "\n==============cppcheck================"
 cppcheck matrix --enable=all --inconclusive --error-exitcode=1 \
--I client/include -I client/tests/include --suppress=missingIncludeSystem
+-I matrix/include --suppress=missingIncludeSystem
 
 
 echo -e "\n==============clang-tidy================"
