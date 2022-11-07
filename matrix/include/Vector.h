@@ -26,15 +26,15 @@ public:
 
     ~Vector();
 
-    Vector &operator=(Vector&& row);
-    Vector &operator=(const Vector& row);
+    Vector &operator=(Vector&& otherVector);
+    Vector &operator=(const Vector& otherVector);
 
-    Vector &operator+=(const Vector& vector);
-    Vector operator+(const Vector& vector);
-    Vector &operator-=(const Vector& vector);
-    Vector operator-(const Vector& vector);
+    Vector &operator+=(const Vector& otherVector);
+    Vector operator+(const Vector& otherVector);
+    Vector &operator-=(const Vector& otherVector);
+    Vector operator-(const Vector& otherVector);
 
-    Vector &operator*=(const Vector& vector);
+    Vector &operator*=(const Vector& otherVector);
     Vector &operator*=(double number);
     Vector operator*(double number);
     Matrix operator*(const Matrix &matrix);

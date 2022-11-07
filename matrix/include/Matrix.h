@@ -48,11 +48,9 @@ public:
     Matrix &operator*=(double number);
 
     Matrix operator*(const Matrix &matrix);
-    Matrix operator*(const Vector &row);
+    Matrix operator*(const Vector &vector);
 
     friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
-
-    std::pair<size_t, size_t> getSize();
 };
 
 #endif //MATRIX_MATRIX_H

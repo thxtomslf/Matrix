@@ -9,15 +9,13 @@ Matrix::Matrix(double **inputValues, size_t x, size_t y) : size(x, y) {
         throw std::runtime_error("Some size equals 0.");
     }
 
+    if (inputValues == nullptr) {
+        throw std::runtime_error("Not initialized input array");
+    }
+
     container = new Vector[x];
-    if (inputValues != nullptr) {
-        for (size_t i = 0; i < x; ++i) {
-            container[i] = Vector(inputValues[i], y, Row);
-        }
-    } else {
-        for (size_t i = 0; i < x; ++i) {
-            container[i] = Vector(y, Row);
-        }
+    for (size_t i = 0; i < x; ++i) {
+        container[i] = Vector(inputValues[i], y, Row);
     }
 }
 
@@ -27,9 +25,7 @@ Matrix::Matrix(const Vector *inputVectors, size_t x, size_t y) : size(x, y) {
     }
 
     if (inputVectors == nullptr) {
-        for (size_t i = 0; i < x; ++i) {
-            container[i] = Vector(y, Row);
-        }
+        throw std::runtime_error("Not initialized input array");
     }
 
     container = new Vector[x];
@@ -155,8 +151,9 @@ Matrix::~Matrix() {
 }
 
 Vector Matrix::getColumn(size_t index) const {
-
-    (index < size.second);
+    if (index >= size.second) {
+        throw std::runtime_error("Index > size.");
+    }
 
     Vector column(size.first, Column);
 
@@ -400,10 +397,6 @@ Matrix Matrix::operator*(const Vector &vector) {
     }
 
     return *this * matrixWrap;
-}
-
-std::pair<size_t, size_t> Matrix::getSize() {
-    return size;
 }
 
 std::ostream &operator<<(std::ostream &os, const Matrix &matrix) {
