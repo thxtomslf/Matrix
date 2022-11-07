@@ -1,5 +1,5 @@
-#ifndef MATRIX_VECTOR_H
-#define MATRIX_VECTOR_H
+#ifndef MATRIX_INCLUDE_VECTOR_H_
+#define MATRIX_INCLUDE_VECTOR_H_
 
 
 class Matrix;
@@ -15,6 +15,7 @@ class Vector {
 private:
     double *container = nullptr;
     size_t length;
+
 public:
     VectorType type;
 
@@ -52,4 +53,4 @@ public:
 
 };
 
-#endif //MATRIX_VECTOR_H
+#endif  //MATRIX_INCLUDE_VECTOR_H_

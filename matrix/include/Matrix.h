@@ -1,5 +1,5 @@
-#ifndef MATRIX_MATRIX_H
-#define MATRIX_MATRIX_H
+#ifndef MATRIX_INCLUDE_MATRIX_H_
+#define MATRIX_INCLUDE_MATRIX_H_
 
 #include <iostream>
 #include <cstddef>
@@ -12,6 +12,7 @@ class Matrix {
 private:
     Vector *container = nullptr;
     std::pair<size_t, size_t> size;
+
 public:
     Matrix();
     Matrix(Matrix&& refMatrix);
@@ -51,6 +52,7 @@ public:
     Matrix operator*(const Vector &vector);
 
     friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
+
 };
 
-#endif //MATRIX_MATRIX_H
+#endif  //MATRIX_INCLUDE_MATRIX_H_

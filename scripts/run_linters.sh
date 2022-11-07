@@ -4,7 +4,7 @@
 cd ../
 
 echo -e "\n==============cppcheck================"
-cppcheck matrix --enable=all --inconclusive --error-exitcode=1 \
+cppcheck matrix/src --enable=all --inconclusive --error-exitcode=1 \
 -I matrix/include --suppress=missingIncludeSystem
 
 

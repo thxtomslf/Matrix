@@ -94,7 +94,6 @@ Vector &Vector::operator=(const Vector &otherVector) {
         for (size_t i = 0; i < length; ++i) {
             container[i] = otherVector.container[i];
         }
-
     }
     return *this;
 }

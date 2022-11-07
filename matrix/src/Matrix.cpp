@@ -181,8 +181,7 @@ Vector Matrix::getDiagonal(bool diagonalChoice) {
     for (size_t i = 0; i < size.first; ++i) {
         if (diagonalChoice) {
             result[i] = container[i][i];
-        }
-        else {
+        } else {
             result[i] = container[i][size.second - 1 - i];
         }
     }
@@ -202,7 +201,7 @@ Matrix Matrix::getTransposed() {
     return transposedMatrix;
 }
 
-double Matrix::getDeterminant() { // По методу Гаусса
+double Matrix::getDeterminant() {  // По методу Гаусса
     if (size.first != size.second) {
         throw std::runtime_error("Matrix isn't square.");
     }
