@@ -12,12 +12,11 @@ enum VectorType {
 
 
 class Vector {
-
-private:
+ private:
     double *container = nullptr;
     size_t length;
 
-public:
+ public:
     VectorType type;
 
     Vector();

@@ -9,12 +9,11 @@
 class Vector;
 
 class Matrix {
-
-private:
+ private:
     Vector *container = nullptr;
     std::pair<size_t, size_t> size;
 
-public:
+ public:
     Matrix();
     Matrix(Matrix&& refMatrix);
     Matrix(const Matrix &refMatrix);
