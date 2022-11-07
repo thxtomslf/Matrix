@@ -70,6 +70,10 @@ Matrix::Matrix(size_t x, size_t y) {
 }
 
 Matrix::Matrix(Matrix&& refMatrix) {
+    if (refMatrix.size == std::pair<size_t, size_t>(0, 0)) {
+        throw std::runtime_error("Invalid matrix size.");
+    }
+
     if (this != &refMatrix) {
         this->~Matrix();
 
@@ -85,6 +89,10 @@ Matrix::Matrix(Matrix&& refMatrix) {
 
 
 Matrix::Matrix(const Matrix &refMatrix) {
+    if (refMatrix.size == std::pair<size_t, size_t>(0, 0)) {
+        throw std::runtime_error("Invalid matrix size.");
+    }
+
     if (this != &refMatrix) {
         this->~Matrix();
 
@@ -186,7 +194,6 @@ Vector Matrix::getDiagonal(bool diagonalChoice) {
 }
 
 Matrix Matrix::getTransposed() {
-
     Matrix transposedMatrix(size.second, size.first);
 
     for (size_t i = 0; i < size.second; ++i) {
@@ -271,7 +278,8 @@ Matrix Matrix::getInverseMatrix() {
             middleMatrix[j] += middleMatrix[i] * factor;
         }
 
-        for (long long j = static_cast<long long>(i - 1); j >= 0; --j) {
+
+        for (size_t j = i; j-- > 0;) {
             double factor = -middleMatrix[j][i + size.second];
             middleMatrix[j] += middleMatrix[i] * factor;
         }
@@ -394,15 +402,16 @@ Matrix Matrix::operator*(const Vector &vector) {
     return *this * matrixWrap;
 }
 
-void Matrix::printMatrix() {
-    for (size_t i = 0; i < size.first; ++i) {
-        for (size_t j = 0; j < size.second; ++j) {
-            std::cout << container[i][j] << " ";
-        }
-        std::cout << "\n";
-    }
-}
-
 std::pair<size_t, size_t> Matrix::getSize() {
     return size;
+}
+
+std::ostream &operator<<(std::ostream &os, const Matrix &matrix) {
+    for (size_t i = 0; i < matrix.size.first; ++i) {
+        for (size_t j = 0; j < matrix.size.second; ++j) {
+            os << matrix.container[i][j] << " ";
+        }
+        os << "\n";
+    }
+    return os;
 }

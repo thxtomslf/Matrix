@@ -100,4 +100,7 @@ TEST_F(FirstPointTests, ColumnTest) {
     matrix[0][0] *= 100;
     EXPECT_NE(row, matrix[0]);
 
+    delete[] firstColValues;
+    delete[] lastColValues;
+
 }

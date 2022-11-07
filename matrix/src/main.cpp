@@ -12,15 +12,21 @@ int main() {
 
 
     Matrix matrix(values, 3, 3);
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "\n";
-    matrix.getDiagonal(true).printVector();
+    std::cout << matrix.getDiagonal(true);
     std::cout << "\n";
     std::cout << "\n";
-    matrix.getTransposed().printMatrix();
+    std::cout << matrix.getTransposed();
     std::cout << "\n";
     matrix *= 10;
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "\n";
-    (matrix * matrix).printMatrix();
+    std::cout << (matrix * matrix);
+
+    for (size_t i = 0; i < 3; ++i) {
+        delete[] values[i];
+    }
+
+    delete[] values;
 }

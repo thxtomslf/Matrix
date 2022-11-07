@@ -60,7 +60,10 @@ Vector::~Vector() {
     length = 0;
 }
 
-Vector &Vector::operator=(Vector&& otherVector) noexcept {
+Vector &Vector::operator=(Vector&& otherVector) {
+    if (otherVector.length == 0) {
+        throw std::runtime_error("Invalid vector size.");
+    }
 
     if (this != &otherVector) {
         this->~Vector();
@@ -76,7 +79,10 @@ Vector &Vector::operator=(Vector&& otherVector) noexcept {
 }
 
 
-Vector &Vector::operator=(const Vector &otherVector) noexcept {
+Vector &Vector::operator=(const Vector &otherVector) {
+    if (otherVector.length == 0) {
+        throw std::runtime_error("Invalid vector size.");
+    }
 
     if (this != &otherVector) {
         this->~Vector();
@@ -202,7 +208,9 @@ bool Vector::operator==(const Vector &vectorToCompare) const {
 
     if (length == vectorToCompare.length) {
         for (size_t i = 0; i < length; ++i) {
-            if (container[i] != vectorToCompare.container[i]) return false;
+            if (std::abs(container[i] - vectorToCompare.container[i]) > 1e-6) {
+                return false;
+            }
         }
         return true;
     }
@@ -228,16 +236,17 @@ size_t Vector::getLength() const {
     return length;
 }
 
-void Vector::printVector() {
-    if (type == Row) {
-        std::cout << "[";
-        for (size_t i = 0; i < length; ++i) {
-            std::cout << container[i] << ", ";
+std::ostream &operator<<(std::ostream &os, const Vector &vector) {
+    if (vector.type == Row) {
+        os << "[";
+        for (size_t i = 0; i < vector.length; ++i) {
+            os << vector.container[i] << ", ";
         }
-        std::cout << ']';
-    } else if (type == Column) {
-        for (size_t i = 0; i < length; ++i) {
-            std::cout << "[" << container[i] << "]\n";
+        os << ']';
+    } else if (vector.type == Column) {
+        for (size_t i = 0; i < vector.length; ++i) {
+            os << "[" << vector.container[i] << "]\n";
         }
     }
+    return os;
 }

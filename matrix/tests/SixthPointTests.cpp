@@ -35,7 +35,7 @@ TEST_F(SixthPointTests, DeterminantTest) {
     std::cout << "Matrix:\n";
     double determinant = 0;
     matrix = Matrix(values, 2, 2);
-    matrix.printMatrix();
+    std::cout << matrix;
 
     std::cout << "Determinant: \n";
     determinant = matrix.getDeterminant();
@@ -46,7 +46,7 @@ TEST_F(SixthPointTests, DeterminantTest) {
 
     std::cout << "Matrix:\n";
     matrix = Matrix(values, 3, 3);
-    matrix.printMatrix();
+    std::cout << matrix;
 
     std::cout << "Determinant: \n";
     determinant = matrix.getDeterminant();
@@ -57,7 +57,7 @@ TEST_F(SixthPointTests, DeterminantTest) {
 
     std::cout << "Matrix:\n";
     matrix = Matrix(values, 4, 4);
-    matrix.printMatrix();
+    std::cout << matrix;
 
     std::cout << "Determinant: \n";
     determinant = matrix.getDeterminant();
@@ -68,7 +68,7 @@ TEST_F(SixthPointTests, DeterminantTest) {
 
     std::cout << "Matrix:\n";
     matrix = Matrix(values, 5, 5);
-    matrix.printMatrix();
+    std::cout << matrix;
 
     std::cout << "Determinant: \n";
     determinant = matrix.getDeterminant();

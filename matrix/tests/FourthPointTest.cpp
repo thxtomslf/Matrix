@@ -46,6 +46,8 @@ protected:
         delete[] valuesMultipliedByDouble[0];
         delete[] valuesMultipliedByDouble[1];
 
+        delete[] resultValuesOfRowAndMatrixMultiplication;
+
         delete[] values;
         delete[] valuesMultipliedByDouble;
     }
@@ -55,10 +57,10 @@ TEST_F(FourthPointTest, MatrixAndDoubleMultiply) {
     std::cout << "Test: MatrixAndDoubleMultiply\n";
     std::cout << "Factor: " << factor << "\n";
     std::cout << "Matrix: " << "\n";
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "Result: " << "\n";
     matrix *= factor;
-    matrix.printMatrix();
+    std::cout << matrix;
     EXPECT_EQ(matrix, matrixMultipliedByDouble);
     std::cout << "\n";
 }
@@ -67,12 +69,12 @@ TEST_F(FourthPointTest, MatrixAndDoubleMultiply) {
 TEST_F(FourthPointTest, RowAndMatrixMultiply) {
     std::cout << "Test: RowAndMatrixMultiply\n";
     std::cout << "Row: ";
-    row.printVector();
+    std::cout << row;
     std::cout << "\n";
     std::cout << "Matrix: " << "\n";
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "Result: " << "\n";
-    (row * matrix).printMatrix();
+    std::cout << (row * matrix);
     EXPECT_EQ(row * matrix, rowAndMatrixMultiplied);
     std::cout << "\n";
 }
@@ -80,13 +82,13 @@ TEST_F(FourthPointTest, RowAndMatrixMultiply) {
 TEST_F(FourthPointTest, MatrixAndRowMultiply) {
     std::cout << "Test: MatrixAndRowMultiply\n";
     std::cout << "Row: ";
-    row.printVector();
+    std::cout << row;
     std::cout << "\n";
     std::cout << "Matrix: " << "\n";
     matrix = Matrix(values, 2, 1);
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "Result: " << "\n";
-    (matrix * row).printMatrix();
+    std::cout << (matrix * row);
     double **resultValues = new double*[2];
     resultValues[0] = new double[2] {1300, 2600};
     resultValues[1] = new double[2] {0, 0};
@@ -103,7 +105,7 @@ TEST_F(FourthPointTest, MatrixAndMatrixMultiply) {
     std::cout << "MatrixA:\n";
     Vector col = matrix.getRow(0).getTransposed();
     Matrix matrixA(&col, 4, 1);
-    matrixA.printMatrix();
+    std::cout << matrixA;
     std::cout << "MatrixB: " << "\n";
     auto *columns = new Vector[4];
     columns[0] = matrix.getRow(0).getTransposed();
@@ -111,9 +113,9 @@ TEST_F(FourthPointTest, MatrixAndMatrixMultiply) {
     columns[2] = matrix.getRow(0).getTransposed();
     columns[3] = matrix.getRow(1).getTransposed();
     Matrix matrixB(columns, 4, 4);
-    matrixB.printMatrix();
+    std::cout << matrixB;
     std::cout << "Result: " << "\n";
-    (matrixB * matrixA).printMatrix();
+    std::cout << (matrixB * matrixA);
     std::cout << "\n";
 
     double **resultValues = new double*[4];
@@ -153,15 +155,15 @@ TEST_F(FourthPointTest, ColumnAndMatrixMultiply) {
     std::cout << "Test: ColumnAndMatrixMultiply\n";
     std::cout << "Column:\n";
     auto column = row.getTransposed();
-    column.printVector();
+    std::cout << column;
     std::cout << "\n";
 
     std::cout << "Matrix: " << "\n";
     matrix = Matrix(values, 1, 2);
-    matrix.printMatrix();
+    std::cout << matrix;
 
     std::cout << "Result: " << "\n";
-    (column * matrix).printMatrix();
+    std::cout << (column * matrix);
 
     double **resultValues = new double*[2];
     resultValues[0] = new double[2] {column[0] * matrix[0][0],

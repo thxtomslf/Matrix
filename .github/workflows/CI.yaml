@@ -3,18 +3,21 @@ on: push
 jobs:
   check:
     runs-on: ubuntu-latest
+    container: thxtomslf/matrix
     steps:
       - uses: actions/checkout@v3
       - run: make check
 
   build:
     runs-on: ubuntu-latest
+    container: thxtomslf/matrix
     steps:
       - uses: actions/checkout@v3
       - run: make build
 
   test:
     runs-on: ubuntu-latest
+    container: thxtomslf/matrix
     steps:
       - uses: actions/checkout@v3
       - run: make test

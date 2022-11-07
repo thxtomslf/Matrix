@@ -50,8 +50,9 @@ public:
     Matrix operator*(const Matrix &matrix);
     Matrix operator*(const Vector &row);
 
+    friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
+
     std::pair<size_t, size_t> getSize();
-    void printMatrix();
 };
 
 #endif //MATRIX_MATRIX_H

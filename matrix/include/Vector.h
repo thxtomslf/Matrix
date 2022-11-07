@@ -26,8 +26,8 @@ public:
 
     ~Vector();
 
-    Vector &operator=(Vector&& row) noexcept;
-    Vector &operator=(const Vector& row) noexcept;
+    Vector &operator=(Vector&& row);
+    Vector &operator=(const Vector& row);
 
     Vector &operator+=(const Vector& vector);
     Vector operator+(const Vector& vector);
@@ -44,11 +44,11 @@ public:
 
     double &operator[](size_t index) const;
 
+    friend std::ostream &operator<<(std::ostream &os, const Vector &vector);
+
     Vector getTransposed();
 
     size_t getLength() const;
-
-    void printVector();
 
 };
 

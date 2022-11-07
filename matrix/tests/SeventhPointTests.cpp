@@ -44,9 +44,9 @@ TEST_F(SeventhPointTests, TransposedMatrixTest) {
 
     std::cout << "Test: TransposedMatrixTest\n";
     std::cout << "Matrix:\n";
-    matrix.printMatrix();
+    std::cout << matrix;
     std::cout << "Transposed Matrix:\n";
-    matrix.getTransposed().printMatrix();
+    std::cout << matrix.getTransposed();
 
     EXPECT_EQ(matrix.getTransposed(), transposedMatrix);
 
@@ -57,10 +57,10 @@ TEST_F(SeventhPointTests, InverseMatrixTest) {
 
     std::cout << "Test: InverseMatrixTest\n";
     std::cout << "Matrix:\n";
-    matrix.printMatrix();
+    std::cout << matrix;
     Matrix inverse = matrix.getInverseMatrix();
     std::cout << "Inverse Matrix:\n";
-    inverse.printMatrix();
+    std::cout << inverse;
     Matrix test = matrix * inverse; // Ожидаем единичную матрицу
     Matrix unitMatrix = Matrix::getUnitMatrix(5);
     for (size_t i = 0; i < 5; ++i) {
