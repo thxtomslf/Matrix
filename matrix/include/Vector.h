@@ -13,10 +13,12 @@ enum VectorType {
 
 class Vector {
 private:
+
     double *container = nullptr;
     size_t length;
 
 public:
+
     VectorType type;
 
     Vector();
@@ -50,7 +52,6 @@ public:
     Vector getTransposed();
 
     size_t getLength() const;
-
 };
 
-#endif  //MATRIX_INCLUDE_VECTOR_H_
+#endif  // MATRIX_INCLUDE_VECTOR_H_

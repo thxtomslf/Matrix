@@ -14,10 +14,14 @@ int main() {
     Matrix matrix(values, 3, 3);
     std::cout << matrix;
     std::cout << "\n";
+    std::cout << matrix.getColumn(0);
+    std::cout << "\n";
     std::cout << matrix.getDiagonal(true);
     std::cout << "\n";
     std::cout << "\n";
     std::cout << matrix.getTransposed();
+    std::cout << "\n";
+    std::cout << matrix.getInverseMatrix();
     std::cout << "\n";
     matrix *= 10;
     std::cout << matrix;

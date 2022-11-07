@@ -10,10 +10,12 @@ class Vector;
 
 class Matrix {
 private:
+
     Vector *container = nullptr;
     std::pair<size_t, size_t> size;
 
 public:
+
     Matrix();
     Matrix(Matrix&& refMatrix);
     Matrix(const Matrix &refMatrix);
@@ -52,7 +54,6 @@ public:
     Matrix operator*(const Vector &vector);
 
     friend std::ostream &operator<<(std::ostream &os, const Matrix &matrix);
-
 };
 
-#endif  //MATRIX_INCLUDE_MATRIX_H_
+#endif  // MATRIX_INCLUDE_MATRIX_H_
